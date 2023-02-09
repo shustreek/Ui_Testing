@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Ui Testing</string>
+    <string name="hello_world">Hello Espresso!</string>
+    <string name="change_text">Change text</string>
+    <string name="type_something">type something…</string>
+    <string name="open_activity_and_change_text">Open activity and change text</string>
+
+    <string name="instructions">See MainActivity.java for valid options or type something ending
+        in \"coffee\".
+    </string>
+    <string name="hint">How do you like your coffee?</string>
+    <string name="validate">Validate</string>
+    <string name="good_choice">Good choice!</string>
+    <string name="bad_choice">Bad choice!</string>
+
+    <string name="waiting_change_text">Change text taking some time</string>
+    <string name="waiting_msg">Waiting for message…</string>
+
+    <string name="element_text">Element</string>
+    <string name="item_element_text">This is element #</string>
+    <string name="middle">This is the middle!</string>
+</resources>

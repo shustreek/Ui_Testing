@@ -1,0 +1,71 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion rootProject.buildToolsVersion
+
+    defaultConfig {
+        applicationId "ru.otus.uitesting"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    lintOptions {
+        abortOnError false
+    }
+    productFlavors {
+    }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+
+    buildTypes {
+       release {
+           minifyEnabled false
+           proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+       }
+    }
+
+}
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    // App dependencies
+    implementation 'androidx.annotation:annotation:' + rootProject.androidxLibVersion;
+    implementation 'com.google.guava:guava:26.0-android'
+    implementation "androidx.core:core-ktx:1.2.0"
+    // Note that espresso-idling-resource is used in the code under test.
+    implementation 'androidx.test.espresso:espresso-idling-resource:' + rootProject.espressoVersion
+    implementation 'androidx.recyclerview:recyclerview:' + rootProject.androidxLibVersion;
+
+    // Testing-only dependencies
+    androidTestImplementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    androidTestImplementation 'androidx.test:core:' + rootProject.coreVersion
+    androidTestImplementation 'androidx.test:core-ktx:' + rootProject.coreVersion
+    androidTestImplementation 'androidx.test.ext:junit:' + rootProject.extJUnitVersion
+    androidTestImplementation 'androidx.test.ext:junit-ktx:' + rootProject.extJUnitVersion
+    androidTestImplementation 'androidx.test:runner:' + rootProject.runnerVersion
+    androidTestImplementation 'androidx.test.espresso:espresso-core:' + rootProject.espressoVersion
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:' + rootProject.espressoVersion;
+
+    testImplementation 'androidx.test:core:' + rootProject.coreVersion;
+    testImplementation 'androidx.test.ext:junit:' + rootProject.extJUnitVersion
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.robolectric:robolectric:' + rootProject.robolectricVersion
+    testImplementation 'androidx.test.espresso:espresso-core:' + rootProject.espressoVersion
+    testImplementation 'androidx.test.espresso:espresso-intents:' + rootProject.espressoVersion
+    testImplementation 'androidx.test.ext:truth:' + rootProject.extTruthVersion
+}
